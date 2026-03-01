@@ -1,6 +1,5 @@
-"""
-adds some sample items to the database so the site isnt empty for fbla purposes
-"""
+#adds some sample items to the database so the site isnt empty for fbla purposes
+
 from app import app, db
 from models import Item, Claim, Transaction
 
