@@ -30,7 +30,7 @@ The website allows users to:
 - Submit a claim or inquiry for an item
 - Manage listings through an admin interface
 
-The design is simple and easy to use so anyone can navigate the site without instructions.
+The design makes it accessible for anyone can navigate the site without specific instructions.
 
 ---
 
