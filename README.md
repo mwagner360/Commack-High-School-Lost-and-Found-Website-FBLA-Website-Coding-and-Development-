@@ -43,6 +43,21 @@ The design is simple and easy to use so anyone can navigate the site without ins
 
 ---
 
+## IMPORTANT NOTE FOR JUDGES
+
+In some cases, an "Internal Server Error" may appear when clicking buttons or moving between pages.
+
+This is not a coding or logic issue with the project. It happens occasionally due to how the application is deployed on Replit.
+
+If this happens, **just refresh the page**. After refreshing, the website works normally. (Sometimes more than one refresh click is needed)
+
+This issue:
+- Does not affect saved data
+- Does not break functionality
+- Is related to deployment, not the code itself
+
+---
+
 ## Live Website
 
 The website is deployed online and can be accessed using the link below.
@@ -60,21 +75,6 @@ No installation is required to view or use the deployed version.
 3. Use the search or filters to find an item.
 4. Submit a found item if you have one.
 5. Submit a claim if you believe an item is yours.
-
----
-
-## IMPORTANT NOTE FOR JUDGES
-
-In some cases, an "Internal Server Error" may appear when clicking buttons or moving between pages.
-
-This is not a coding or logic issue with the project. It happens occasionally due to how the application is deployed on Replit.
-
-If this happens, just refresh the page. After refreshing, the website works normally. (Sometimes more than one refresh click is needed)
-
-This issue:
-- Does not affect saved data
-- Does not break functionality
-- Is related to deployment, not the code itself
 
 ---
 
