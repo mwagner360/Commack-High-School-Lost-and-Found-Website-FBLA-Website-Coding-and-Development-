@@ -64,6 +64,8 @@ The website is deployed online and can be accessed using the link below.
 
 https://chs-lost-and-found-website-fbla--michaelwagner00.replit.app/
 
+To login as an admin, the password is **commack2026** (for judges).
+
 No installation is required to view or use the deployed version.
 
 ---
