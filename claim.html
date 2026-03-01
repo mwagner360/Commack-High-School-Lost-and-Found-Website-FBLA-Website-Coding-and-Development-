@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Claim: {{ item.title }}{% endblock %}
+
+{% block content %}
+<div class="formPage">
+    <div class="container containerNarrow">
+        <a href="{{ url_for('itemDetail', itemId=item.id) }}" class="backLink">&larr; Back to item</a>
+
+        <div class="formHeader">
+            <h1>Claim This Item</h1>
+            <p>Think <strong>{{ item.title }}</strong> is yours? Fill out the form below and an admin will review your claim. Be as specific as you can so we can verify it belongs to you.</p>
+        </div>
+
+        <div class="claimPreview">
+            {% if item.photoFilename %}
+            <img src="{{ url_for('static', filename='uploads/' + item.photoFilename) }}" alt="{{ item.title }}">
+            {% endif %}
+            <div>
+                <span class="categoryBadge">{{ item.category }}</span>
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.location }}, {{ item.dateFound }}</p>
+            </div>
+        </div>
+
+        <form method="POST" class="mainForm">
+            <fieldset>
+                <legend>Your Information</legend>
+                <div class="formRow">
+                    <div class="formGroup">
+                        <label for="claimantName">Full Name <span class="req">*</span></label>
+                        <input type="text" id="claimantName" name="claimantName" required>
+                    </div>
+                    <div class="formGroup">
+                        <label for="claimantEmail">Email <span class="req">*</span></label>
+                        <input type="email" id="claimantEmail" name="claimantEmail" required placeholder="name@stu.commack.k12.ny.us">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Prove It's Yours</legend>
+                <div class="formGroup">
+                    <label for="message">Describe why you believe this item belongs to you <span class="req">*</span></label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Include details like specifics, what was inside, when/where you lost it, etc."></textarea>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn btnPrimary btnLarge">Submit Claim</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

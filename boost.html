@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Boost: {{ item.title }}{% endblock %}
+
+{% block content %}
+<div class="formPage">
+    <div class="container containerNarrow">
+        <a href="{{ url_for('itemDetail', itemId=item.id) }}" class="backLink">&larr; Back to item</a>
+
+        <div class="formHeader">
+            <h1>Boost This Listing</h1>
+            <p>Pay a small fee to move <strong>{{ item.title }}</strong> to the top of search results so the owner is more likely to find it.</p>
+        </div>
+
+        <form method="POST" class="mainForm">
+            <fieldset>
+                <legend>Your Information</legend>
+                <div class="formRow">
+                    <div class="formGroup">
+                        <label for="buyerName">Full Name <span class="req">*</span></label>
+                        <input type="text" id="buyerName" name="buyerName" required>
+                    </div>
+                    <div class="formGroup">
+                        <label for="buyerEmail">Email <span class="req">*</span></label>
+                        <input type="email" id="buyerEmail" name="buyerEmail" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Payment</legend>
+                <p class="fieldsetNote">This is a simulated payment for demonstrations. No real charges will be made to the card.</p>
+                <div class="formGroup">
+                    <label for="cardNumber">Card Number <span class="req">*</span></label>
+                    <input type="text" id="cardNumber" name="cardNumber" required placeholder="4242 4242 4242 4242" maxlength="19">
+                </div>
+                <div class="formRow">
+                    <div class="formGroup">
+                        <label for="expiry">Expiration <span class="req">*</span></label>
+                        <input type="text" id="expiry" name="expiry" required placeholder="MM/YY" maxlength="5">
+                    </div>
+                    <div class="formGroup">
+                        <label for="cvv">CVV <span class="req">*</span></label>
+                        <input type="text" id="cvv" name="cvv" required placeholder="123" maxlength="4">
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="orderSummary">
+                <div class="summaryRow">
+                    <span>Boost: {{ item.title }}</span>
+                    <span>$2.99</span>
+                </div>
+                <div class="summaryRow summaryTotal">
+                    <strong>Total</strong>
+                    <strong>$2.99</strong>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btnPrimary btnLarge">Pay $2.99</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}Report Found Item{% endblock %}
+
+{% block content %}
+<div class="formPage">
+    <div class="container containerNarrow">
+        <div class="formHeader">
+            <h1>Report a Found Item</h1>
+            <p>Found something that isn't yours? Fill this out and we'll get it posted so the owner can find it.</p>
+        </div>
+
+        <form method="POST" enctype="multipart/form-data" class="mainForm">
+            <fieldset>
+                <legend>Item Details</legend>
+
+                <div class="formGroup">
+                    <label for="title">Item Name <span class="req">*</span></label>
+                    <input type="text" id="title" name="title" required placeholder="e.g. Black Fjallraven Backpack">
+                </div>
+                <div class="formGroup">
+                    <label for="category">Category <span class="req">*</span></label>
+                    <select id="category" name="category" required>
+                        <option value="">Pick one...</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Books">Books / Notebooks</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Sports">Sports Equipment</option>
+                        <option value="Keys">Keys / ID Cards</option>
+                        <option value="Water Bottles">Water Bottles</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="formGroup">
+                    <label for="description">Description <span class="req">*</span></label>
+                    <textarea id="description" name="description" rows="4" required placeholder="Describe the item, color, size, any distinguishing marks..."></textarea>
+                </div>
+                <div class="formRow">
+                    <div class="formGroup">
+                        <label for="location">Where You Found It <span class="req">*</span></label>
+                        <input type="text" id="location" name="location" required placeholder="e.g. Cafeteria, Room 214">
+                    </div>
+                    <div class="formGroup">
+                        <label for="dateFound">Date Found <span class="req">*</span></label>
+                        <input type="date" id="dateFound" name="dateFound" required>
+                    </div>
+                </div>
+                <div class="formGroup">
+                    <label for="photo">Photo (optional but helps a lot)</label>
+                    <div class="fileUpload">
+                        <input type="file" id="photo" name="photo" accept="image/*">
+                        <div class="fileUploadLabel">
+                            <span class="fileText">Click to upload a photo</span>
+                            <span class="fileHint">PNG, JPG, GIF, max 5mb</span>
+                        </div>
+                        <div id="previewArea"></div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Your Contact Info</legend>
+                <div class="formRow">
+                    <div class="formGroup">
+                        <label for="finderName">Your Name <span class="req">*</span></label>
+                        <input type="text" id="finderName" name="finderName" required>
+                    </div>
+                    <div class="formGroup">
+                        <label for="finderEmail">Your Email <span class="req">*</span></label>
+                        <input type="email" id="finderEmail" name="finderEmail" required placeholder="you@commack.k12.ny.us">
+                    </div>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn btnPrimary btnLarge">Submit Item</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extraScripts %}
+<script>
+var photoInput = document.getElementById("photo");
+var previewArea = document.getElementById("previewArea");
+var fileLabel = document.querySelector(".fileUploadLabel");
+
+photoInput.addEventListener("change", function() {
+    previewArea.innerHTML = "";
+    if (this.files && this.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var img = document.createElement("img");
+            img.src = e.target.result;
+            img.alt = "Preview";
+            img.className = "previewImg";
+            previewArea.appendChild(img);
+            fileLabel.style.display = "none";
+        };
+        reader.readAsDataURL(this.files[0]);
+    } else {
+        fileLabel.style.display = "";
+    }
+});
+</script>
+
+{% endblock %}

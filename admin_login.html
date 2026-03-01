@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Admin Login{% endblock %}
+
+{% block content %}
+<div class="loginPage">
+    <div class="loginBox">
+        <h1>Admin Login</h1>
+        <p>This area is for staff only.</p>
+        <form method="POST" class="loginForm">
+            <div class="formGroup">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter admin password">
+            </div>
+            <button type="submit" class="btn btnPrimary btnLarge">Log In</button>
+        </form>
+        <a href="{{ url_for('home') }}" class="backLink">&larr; Back to home</a>
+    </div>
+</div>
+{% endblock %}

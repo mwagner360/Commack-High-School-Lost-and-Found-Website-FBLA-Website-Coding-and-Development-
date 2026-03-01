@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div style="background:#fef7e6; padding:0.6rem 1.25rem; text-align:center; font-size:0.88rem;">
+    Admin login password and source code links can be found on the <a href="{{ url_for('sources') }}">Sources & Documentation</a> page.
+</div>
+
+<section class="hero">
+    <div class="heroContent">
+        <h1>Lost something?<br><span>We can help.</span></h1>
+        <p class="heroSub">Commack High School's lost and found system. Report items you've found, search for stuff you've lost, and get reunited with your belongings.</p>
+        <div class="heroActions">
+            <a href="{{ url_for('search') }}" class="btn btnPrimary">Search for My Item</a>
+            <a href="{{ url_for('submitItem') }}" class="btn btnOutline" style="color:white; border-color:rgba(255,255,255,0.4)">Report a Found Item</a>
+        </div>
+    </div>
+</section>
+
+<div class="heroStats">
+    <div class="statCard">
+        <span class="statNum">{{ totalFound }}</span>
+        <span class="statLabel">Items Reported</span>
+    </div>
+    <div class="statCard">
+        <span class="statNum">{{ totalClaimed }}</span>
+        <span class="statLabel">Items Returned</span>
+    </div>
+</div>
+
+<section class="recentSection">
+    <div class="container">
+        <div class="sectionHeader">
+            <h2>Recently Found</h2>
+            <a href="{{ url_for('search') }}" class="viewAllLink">View all &rarr;</a>
+        </div>
+
+        {% if recentItems|length > 0 %}
+        <div class="itemsGrid">
+            {% for item in recentItems %}
+            <div class="itemCard">
+                <div class="cardImage">
+                    {% if item.photoFilename %}
+                    <img src="{{ url_for('static', filename='uploads/' + item.photoFilename) }}" alt="{{ item.title }}">
+                    {% else %}
+                    <div class="cardPlaceholder">No Photo</div>
+                    {% endif %}
+                </div>
+                <div class="cardBody">
+                    <span class="categoryBadge">{{ item.category }}</span>
+                    <h3>{{ item.title }}</h3>
+                    <p class="cardDesc">{{ item.description[:100] }}{% if item.description|length > 100 %}...{% endif %}</p>
+                    <div class="cardMeta">
+                        <span>{{ item.location }}</span>
+                        <span>{{ item.dateFound }}</span>
+                    </div>
+                    <a href="{{ url_for('itemDetail', itemId=item.id) }}" class="btn btnSmall">View Details</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="emptyState">No items posted yet. Found something? <a href="{{ url_for('submitItem') }}">Report it here</a>.</p>
+        {% endif %}
+    </div>
+</section>
+
+<section class="howItWorks">
+    <div class="container">
+        <h2>How It Works</h2>
+        <div class="stepsGrid">
+            <div class="stepCard">
+                <h3>1. Find an Item</h3>
+                <p>Spotted something in the hallway, cafeteria, or gym? Pick it up and keep it safe.</p>
+            </div>
+            <div class="stepCard">
+                <h3>2. Report It</h3>
+                <p>Fill out a quick form with a photo and description. An admin will approve your post.</p>
+            </div>
+            <div class="stepCard">
+                <h3>3. Reunite</h3>
+                <p>The owner searches the site, files a claim, and gets their item back.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
