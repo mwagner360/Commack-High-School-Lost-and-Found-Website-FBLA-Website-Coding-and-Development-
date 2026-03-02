@@ -54,7 +54,7 @@ If this happens, **just refresh the page**. After refreshing, the website works 
 This issue:
 - Does not affect saved data
 - Does not break functionality
-- Is related to deployment, not the code itself
+- Is related to live deployment, not the code itself
 
 ---
 
